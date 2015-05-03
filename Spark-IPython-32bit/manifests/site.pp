@@ -19,6 +19,7 @@ node default {
 
     package {[
             "pkg-config",
+            "openjdk-7-jre-headless",
             "python-pip",
             "git",
             "libzmq-dev",
@@ -26,7 +27,15 @@ node default {
             "python-dev",
             "silversearcher-ag",
             "tmux",
+            "python-matplotlib"
         ]:
         ensure => installed,
     }
+
+    class { ["mooc::spark"]:
+        home_directory => $home,
+        owner          => vagrant,
+        group          => vagrant,
+    }
+
 }
