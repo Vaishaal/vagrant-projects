@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
       v.customize ["modifyvm", :id, "--memory", "#{boxRam}"]
       v.customize ["modifyvm", :id, "--cpus", "#{boxCpus}"]
     end
-    master.vm.provision :shell, :path => "provision_spark_node.sh"
+    #master.vm.provision :shell, :path => "provision_spark_node.sh"
     if File.exist?(File.expand_path("../modules", __FILE__))
         puppet_root = File.expand_path("../", __FILE__)
     elsif File.exist?(File.expand_path("../../modules", __FILE__))

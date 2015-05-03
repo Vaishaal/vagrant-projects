@@ -53,7 +53,7 @@ if not spark_home:
 '''
 
 ip = '*' # Warning: this is potentially insecure
-port = 1088
+port = 8004
 
 #-----------------------
 # Create profile and start

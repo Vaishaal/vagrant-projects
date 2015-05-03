@@ -53,9 +53,6 @@ sudo apt-get -y install python-dev
 sudo python -m pip install "ipython[notebook]" --upgrade
 
 # Start IPython notebook
-cd ~
-cp /vagrant/ipython-pyspark.py ~/
-~/ipython-pyspark.py
 
 echo "== end vm provisioning $(date +'%Y/%m/%d %H:%M:%S')"
 echo "== $(($(date +%s) - $STARTTIME)) seconds"
