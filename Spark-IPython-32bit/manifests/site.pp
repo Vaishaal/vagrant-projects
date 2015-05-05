@@ -38,4 +38,24 @@ node default {
         group          => vagrant,
     }
 
+    python::pip { 'ipython':
+        pkgname       => 'ipython',
+        ensure        => '3.1'
+    }
+
+    python::pip { 'pyzmq':
+        pkgname       => 'pyzmq',
+    }
+
+    python::pip { 'jinja2':
+        pkgname       => 'jinja2',
+    }
+
+    python::pip { 'tornado':
+        pkgname       => 'tornado',
+    }
+
+    python::pip { 'jsonschema':
+        pkgname       => 'jsonschema',
+    }
 }

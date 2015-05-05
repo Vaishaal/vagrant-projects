@@ -85,7 +85,7 @@ try:
         os.chmod(ipython_notebook_config_path, 0600)
 
     print 'Launching PySpark with IPython Notebook\n'
-    cmd = '/usr/local/bin/spark-1.3.1-bin-hadoop2.6/bin/pyspark %s' % pyspark_submit_args
+    cmd = 'pyspark %s' % pyspark_submit_args
     os.system(cmd)
     sys.exit(0)
 except KeyboardInterrupt:

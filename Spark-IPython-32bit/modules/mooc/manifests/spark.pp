@@ -13,6 +13,12 @@ class mooc::spark($home_directory, $owner, $group) {
             source  => "puppet:///modules/mooc/spark/apache-mirror-selector.py",
     }
 
+    file {
+        "$home_directory/spark_notebook.py":
+            ensure  => present,
+            source  => "puppet:///modules/mooc/spark/spark_notebook.py",
+    }
+
     exec { acquire_spark:
         command => "wget -q `python $home_directory/apache-mirror-selector.py http://www.apache.org/dyn/closer.cgi?path=spark/spark-1.3.1/spark-1.3.1-bin-hadoop2.6.tgz`",
         creates => "$home_directory/spark-1.3.1-bin-hadoop2.6.tgz",
@@ -28,7 +34,19 @@ class mooc::spark($home_directory, $owner, $group) {
 
     file { '/etc/profile.d/append-spark-path.sh':
             mode    => 644,
-            content  => 'PATH=$PATH:/usr/local/spark/1.3.1',
-            require => Exec[untar-spark]
+            content  => 'PATH=$PATH:/usr/local/bin/spark-1.3.1-bin-hadoop2.6/bin',
     }
+
+    file { '/etc/profile.d/set-spark-home.sh':
+            mode    => 644,
+            content  => 'SPARKHOME=/usr/local/bin/spark-1.3.1-bin-hadoop2.6',
+    }
+
+    upstart::job { 'notebook':
+                    user           => 'vagrant',
+                    group          => 'vagrant',
+                    exec           => "python $home_directory/spark_notebook.py",
+ 
+                }
+
 }
