@@ -39,7 +39,7 @@ class mooc::spark($home_directory, $owner, $group) {
 
     file { '/etc/profile.d/set-spark-home.sh':
             mode    => 644,
-            content  => 'SPARKHOME=/usr/local/bin/spark-1.3.1-bin-hadoop2.6',
+            content  => 'SPARK_HOME=/usr/local/bin/spark-1.3.1-bin-hadoop2.6',
     }
 
     upstart::job { 'notebook':
