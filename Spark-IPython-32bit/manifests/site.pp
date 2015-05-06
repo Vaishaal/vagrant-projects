@@ -25,8 +25,6 @@ node default {
             "libzmq-dev",
             "exuberant-ctags",
             "python-dev",
-            "silversearcher-ag",
-            "tmux",
             "python-matplotlib"
         ]:
         ensure => installed,
@@ -39,7 +37,7 @@ node default {
     }
 
     python::pip { 'ipython':
-        pkgname       => 'ipython',
+        pkgname       => 'ipython[notebook]',
         ensure        => '3.1'
     }
 
