@@ -45,6 +45,7 @@ class mooc::spark($home_directory, $owner, $group) {
     upstart::job { 'notebook':
                     user           => 'vagrant',
                     group          => 'vagrant',
+                    env            => { "PATH" => "/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin/spark-1.3.1-bin-hadoop2.6/bin" },
                     exec           => "python $home_directory/spark_notebook.py",
  
                 }
