@@ -22,6 +22,10 @@ num_executors   = 12 #24
 executor_cores  = 2
 executor_memory = '1g' #10g
 
+home = os.getenv('HOME', None)
+if home:
+    os.chdir(home)
+
 pyspark_submit_args = os.getenv('PYSPARK_SUBMIT_ARGS', None)
 if not pyspark_submit_args:
     pyspark_submit_args = '--num-executors %d --executor-cores %d --executor-memory %s' % (num_executors, executor_cores, executor_memory)
